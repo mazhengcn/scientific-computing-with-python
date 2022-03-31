@@ -18,7 +18,7 @@
   "settings": {
     "python.defaultInterpreterPath": "/opt/conda/bin/python",
     "python.formatting.blackPath": "/opt/conda/bin/black",
-	"python.formatting.provider": "black"
+	  "python.formatting.provider": "black"
   },
 
   // Add the IDs of extensions you want installed when the container is created.
