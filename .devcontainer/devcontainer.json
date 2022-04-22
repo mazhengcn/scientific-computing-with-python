@@ -1,38 +1,33 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.227.0/containers/python-3-anaconda
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.231.6/containers/python-3-miniconda
 {
-  "name": "Anaconda (Python 3)",
-  "build": {
-    "context": "..",
-    "dockerfile": "Dockerfile",
-    "args": {
-      "NODE_VERSION": "none"
-    }
-  },
+	// Set container's name.
+	"name": "Miniconda (Python 3)",
 
-  "features": {
-    "jupyterlab": "latest"
-  },
+	// Use prebuilt image.
+	"image": "mcr.microsoft.com/vscode/devcontainers/miniconda:0-3",
 
-  // Set *default* container specific settings.json values on container create.
-  "settings": {
-    "python.defaultInterpreterPath": "/opt/conda/bin/python",
-    "python.formatting.blackPath": "/opt/conda/bin/black",
-	  "python.formatting.provider": "black"
-  },
+	// Set *default* container specific settings.json values on container create.
+	"settings": { 
+		"terminal.integrated.defaultProfile.linux": "zsh",
+		"python.defaultInterpreterPath": "/opt/conda/bin/python",
+	},
 
-  // Add the IDs of extensions you want installed when the container is created.
-  "extensions": ["ms-python.python", "ms-python.vscode-pylance"],
+	// Add the IDs of extensions you want installed when the container is created.
+	"extensions": [
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"ms-python.pylint",
+		"ms-python.black-formatter"
+		
+	],
 
-  // Use 'forwardPorts' to make a list of ports inside the container available locally.
-  "forwardPorts": [8888],
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
 
-  // Use 'postCreateCommand' to run commands after the container is created.
-  // "postCreateCommand": "python --version",
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "/opt/conda/bin/conda env update -n base -f environment.yml",
 
-  // Use 'postStartCommand' to run commands after the container is created.
-  "postStartCommand": "nohup bash -c 'jupyter lab --ip=0.0.0.0 --port=8888 --allow-root &'",
-
-  // Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-  "remoteUser": "vscode",
+	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"remoteUser": "vscode"
 }

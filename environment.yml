@@ -1,0 +1,8 @@
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - numpy
+  - scipy
+  - matplotlib>=3.5.0
+  - jupyterlab
