@@ -1,16 +1,29 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.231.6/containers/python-3-miniconda
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.234.0/containers/python-3-miniconda
 {
-	// Set container's name.
-	"name": "Miniconda (Python 3)",
+	// Container name
+	"name": "Scientific Computing Dev Container",
 
-	// Use prebuilt image.
-	"image": "mcr.microsoft.com/vscode/devcontainers/miniconda:0-3",
+	// Image name
+	"image": "python:slim-bullseye",
+
+	// Add features
+	"features": {
+		"common": {
+			"username": "vscode",
+			"uid": "automatic",
+			"gid": "automatic",
+			"installZsh": true,
+			"installOhMyZsh": true,
+			"upgradePackages": true,
+			"nonFreePackages": true
+		}
+	},
 
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
+	"settings": {
 		"terminal.integrated.defaultProfile.linux": "zsh",
-		"python.defaultInterpreterPath": "/opt/conda/bin/python",
+		"python.defaultInterpreterPath": "/usr/local/bin/python"
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
@@ -18,15 +31,15 @@
 		"ms-python.python",
 		"ms-python.vscode-pylance",
 		"ms-python.pylint",
-		"ms-python.black-formatter"
-		
+		"ms-python.black-formatter",
+		"ms-python.isort"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "/opt/conda/bin/conda env update -n base -f environment.yml",
+	"postCreateCommand": "python -m pip install --no-cache-dir --upgrade pip && python -m pip install --no-cache-dir -r requirements.txt",
 
 	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
 	"remoteUser": "vscode"
