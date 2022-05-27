@@ -1,13 +1,10 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.234.0/containers/python-3-miniconda
 {
-	// Container name
 	"name": "Scientific Computing Dev Container",
-
-	// Image name
-	"image": "python:slim-bullseye",
-
-	// Add features
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
 	"features": {
 		"common": {
 			"username": "vscode",
@@ -19,14 +16,10 @@
 			"nonFreePackages": true
 		}
 	},
-
-	// Set *default* container specific settings.json values on container create.
 	"settings": {
 		"terminal.integrated.defaultProfile.linux": "zsh",
-		"python.defaultInterpreterPath": "/usr/local/bin/python"
+		"python.defaultInterpreterPath": "/opt/conda/bin/python"
 	},
-
-	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
 		"ms-python.python",
 		"ms-python.vscode-pylance",
@@ -34,13 +27,11 @@
 		"ms-python.black-formatter",
 		"ms-python.isort"
 	],
-
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "python -m pip install --no-cache-dir --upgrade pip && python -m pip install --no-cache-dir -r requirements.txt",
-
-	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+	"runArgs": [
+		"--name=scientific_computing",
+		"--gpus=all",
+		"--ipc=host"
+	],
+	// "postCreateCommand": "python -m pip install --no-cache-dir --upgrade pip && python -m pip install --no-cache-dir -r requirements.txt",
 	"remoteUser": "vscode"
 }
