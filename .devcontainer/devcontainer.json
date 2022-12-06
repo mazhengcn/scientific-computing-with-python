@@ -1,37 +1,25 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.234.0/containers/python-3-miniconda
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "Scientific Computing Dev Container",
-	"build": {
-		"dockerfile": "Dockerfile"
-	},
-	"features": {
-		"common": {
-			"username": "vscode",
-			"uid": "automatic",
-			"gid": "automatic",
-			"installZsh": true,
-			"installOhMyZsh": true,
-			"upgradePackages": true,
-			"nonFreePackages": true
+	"name": "Scientific Computing",
+	"image": "mcr.microsoft.com/devcontainers/python:3.11",
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	// "features": {},
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-python.vscode-python",
+				"ms-python.vscode-pylance",
+				"ms-python.black-formatter",
+				"ms-python.flake8"
+			]
 		}
 	},
-	"settings": {
-		"terminal.integrated.defaultProfile.linux": "zsh",
-		"python.defaultInterpreterPath": "/opt/conda/bin/python"
-	},
-	"extensions": [
-		"ms-python.python",
-		"ms-python.vscode-pylance",
-		"ms-python.pylint",
-		"ms-python.black-formatter",
-		"ms-python.isort"
-	],
-	"runArgs": [
-		"--name=scientific_computing",
-		"--gpus=all",
-		"--ipc=host"
-	],
-	// "postCreateCommand": "python -m pip install --no-cache-dir --upgrade pip && python -m pip install --no-cache-dir -r requirements.txt",
-	"remoteUser": "vscode"
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	// "forwardPorts": [],
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "python -m pip install --no-cache-dir -r requirements.txt",
+	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "root"
 }
