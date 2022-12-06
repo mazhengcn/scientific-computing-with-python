@@ -8,9 +8,10 @@
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "zsh"
+			},
 			"extensions": [
-				"ms-python.vscode-python",
-				"ms-python.vscode-pylance",
 				"ms-python.black-formatter",
 				"ms-python.flake8"
 			]
