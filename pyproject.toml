@@ -1,5 +1,15 @@
+[project]
+dependencies = [
+    "jupyterlab",
+    "matplotlib",
+    "numpy",
+    "pandas",
+    "scipy",
+    "seaborn"
+]
+
 [tool.black]
-preview = true
+line-length = 79
 
 [tool.isort]
 profile = "black"

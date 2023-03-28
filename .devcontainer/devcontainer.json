@@ -1,26 +1,38 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/python
 {
-	"name": "Scientific Computing",
-	"image": "mcr.microsoft.com/devcontainers/python:3.11",
-	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
-	// Configure tool-specific properties.
+	"name": "Scientific Computing in Python",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": true,
+			"installOhMyZsh": true,
+			"configureZshAsDefaultShell": true,
+			"upgradePackages": true,
+			"username": "none"
+		},
+		"ghcr.io/mazhengcn/devcontainer-features/starship:1": {}
+	},
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"terminal.integrated.defaultProfile.linux": "zsh"
+				"python.defaultInterpreterPath": "/opt/venv/bin/python"
 			},
 			"extensions": [
+				"aaron-bond.better-comments",
+				"bungcip.better-toml",
+				"GitHub.copilot",
 				"ms-python.black-formatter",
-				"ms-python.flake8"
+				"ms-python.flake8",
+				"ms-python.isort",
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ms-toolsai.jupyter",
+				"yzhang.markdown-all-in-one"
 			]
 		}
 	},
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "python -m pip install --no-cache-dir -r requirements.txt",
-	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	"remoteUser": "root"
+	"remoteEnv": {
+		"TZ": "Asia/Shanghai"
+	}
 }
