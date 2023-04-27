@@ -1,6 +1,6 @@
 ARG VENV_PATH=/opt/venv
 
-FROM python:3.11-slim AS pip-installs
+FROM python:3.11-slim-bullseye AS pip-installs
 ARG VENV_PATH
 
 RUN python -m venv ${VENV_PATH}
@@ -14,7 +14,7 @@ RUN python -m pip install --upgrade --no-cache-dir pip \
     scipy \
     seaborn
 
-FROM python:3.11-slim
+FROM python:3.11-slim-bullseye
 ARG VENV_PATH
 
 COPY --from=pip-installs ${VENV_PATH} ${VENV_PATH}

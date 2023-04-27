@@ -4,13 +4,7 @@
 		"dockerfile": "Dockerfile"
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
-			"installZsh": true,
-			"installOhMyZsh": true,
-			"configureZshAsDefaultShell": true,
-			"upgradePackages": true,
-			"username": "none"
-		},
+		"ghcr.io/devcontainers/features/git:1": {},
 		"ghcr.io/mazhengcn/devcontainer-features/starship:1": {}
 	},
 	"customizations": {
