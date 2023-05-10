@@ -1,21 +1,16 @@
-ARG VENV_PATH=/opt/venv
+FROM python:3.11-slim-bullseye AS base
 
-FROM python:3.11-slim-bullseye AS pip-installs
+FROM base AS pip-installs
 ARG VENV_PATH
 
-RUN python -m venv ${VENV_PATH}
-ENV PATH=${VENV_PATH}/bin:$PATH
-RUN python -m pip install --upgrade --no-cache-dir pip \
-    && python -m pip install --no-cache-dir \
-    jupyterlab \
-    matplotlib \
-    numpy \
-    pandas \
-    scipy \
-    seaborn
+RUN python -m venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
 
-FROM python:3.11-slim-bullseye
-ARG VENV_PATH
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --upgrade --no-cache-dir pip \
+    && pip install --no-cache-dir -r /tmp/requirements.txt \
+    && rm -rf /tmp/requirements.txt
 
-COPY --from=pip-installs ${VENV_PATH} ${VENV_PATH}
-ENV PATH=${VENV_PATH}/bin:$PATH
+FROM base
+COPY --from=pip-installs /opt/venv /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"

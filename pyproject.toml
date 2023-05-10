@@ -1,13 +1,3 @@
-[project]
-dependencies = [
-    "jupyterlab",
-    "matplotlib",
-    "numpy",
-    "pandas",
-    "scipy",
-    "seaborn"
-]
-
 [tool.black]
 line-length = 79
 

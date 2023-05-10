@@ -1,11 +1,12 @@
 {
-	"name": "Scientific Computing in Python",
+	"name": "Scientific Computing",
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/git:1": {},
-		"ghcr.io/mazhengcn/devcontainer-features/starship:1": {}
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": false
+		}
 	},
 	"customizations": {
 		"vscode": {
@@ -13,16 +14,13 @@
 				"python.defaultInterpreterPath": "/opt/venv/bin/python"
 			},
 			"extensions": [
-				"aaron-bond.better-comments",
-				"bungcip.better-toml",
 				"GitHub.copilot",
 				"ms-python.black-formatter",
 				"ms-python.flake8",
 				"ms-python.isort",
 				"ms-python.python",
 				"ms-python.vscode-pylance",
-				"ms-toolsai.jupyter",
-				"yzhang.markdown-all-in-one"
+				"ms-toolsai.jupyter"
 			]
 		}
 	},
