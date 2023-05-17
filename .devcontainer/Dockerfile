@@ -1,4 +1,4 @@
-FROM python:3.11-slim-bullseye AS base
+FROM python:slim-bullseye AS base
 
 FROM base AS pip-installs
 ARG VENV_PATH
