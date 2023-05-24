@@ -6,7 +6,7 @@
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {
 			"configureZshAsDefaultShell": true,
-			"username": "none"
+			"username": "vscode"
 		}
 	},
 	"customizations": {
@@ -24,4 +24,5 @@
 			]
 		}
 	},
+	"remoteUser": "vscode"
 }

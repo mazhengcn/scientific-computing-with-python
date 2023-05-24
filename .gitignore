@@ -1,5 +1,5 @@
 # Project related files
-nohup.out
+deep_learning_pytorch/data/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
