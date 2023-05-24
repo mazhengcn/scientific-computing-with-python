@@ -5,7 +5,8 @@
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/common-utils:2": {
-			"installZsh": false
+			"configureZshAsDefaultShell": true,
+			"username": "none"
 		}
 	},
 	"customizations": {
@@ -14,7 +15,6 @@
 				"python.defaultInterpreterPath": "/opt/venv/bin/python"
 			},
 			"extensions": [
-				"GitHub.copilot",
 				"ms-python.black-formatter",
 				"ms-python.flake8",
 				"ms-python.isort",
@@ -24,7 +24,4 @@
 			]
 		}
 	},
-	"remoteEnv": {
-		"TZ": "Asia/Shanghai"
-	}
 }
