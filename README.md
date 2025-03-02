@@ -1,6 +1,3 @@
-
-
-
 # Scientific Computing with Python - Second Edition
 
 <a href="https://www.packtpub.com/product/Scientific-Computing-with-Python-Second-Edition/9781838822323?utm_source=github&utm_medium=repository&utm_campaign=9781838982881"><img src="https://static.packt-cdn.com/products/9781838822323/cover/smaller" alt="Scientific Computing with Python - Second Edition" height="256px" align="right"></a>
@@ -16,7 +13,7 @@ This book will help you to explore new Python syntax features and create differe
 
 By the end of this Python book, you'll have gained a solid understanding of task automation and how to implement and test mathematical algorithms within the realm of scientific computing.
 
-This book covers the following exciting features: 
+This book covers the following exciting features:
 * Understand the building blocks of computational mathematics, linear algebra, and related Python objects
 * Use Matplotlib to create high-quality figures and graphics to draw and visualize results
 * Apply object-oriented programming (OOP) to scientific computing in Python
@@ -55,9 +52,9 @@ With the following software and hardware list you can run all code files present
 
 ### Software and Hardware List
 
-| Chapter  | Software required                                                                    | OS required                        |
-| -------- | -------------------------------------------------------------------------------------| -----------------------------------|
-|  1 - 19  |   Anaconda, Python 3.8, JupyterLab                                           				| Windows, Mac OS X, and Linux (Any) |
+| Chapter | Software required                | OS required                        |
+| ------- | -------------------------------- | ---------------------------------- |
+| 1 - 19  | Anaconda, Python 3.8, JupyterLab | Windows, Mac OS X, and Linux (Any) |
 
 We also provide a PDF file that has color images of the screenshots/diagrams used in this book. [Click here to download it](https://static.packt-cdn.com/downloads/9781838822323_ColorImages.pdf).
 

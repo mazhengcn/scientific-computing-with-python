@@ -1,9 +1,0 @@
-jupyterlab
-matplotlib
-numpy
-pandas
-scipy
-seaborn
-torch
-torchvision
-torchaudio

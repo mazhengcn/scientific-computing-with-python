@@ -1,2 +1,15 @@
-[tool.isort]
-profile = "black"
+[project]
+name = "scientific-computing-with-python"
+version = "0.1.0"
+description = "This is the code repository for Scientific Computing with Python"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "jupyterlab>=4.3.5",
+    "matplotlib>=3.10.1",
+    "numpy>=2.2.3",
+    "scipy>=1.15.2",
+]
+
+[tool.uv]
+dev-dependencies = ["pre-commit>=3.8.0", "ruff>=0.6.3"]

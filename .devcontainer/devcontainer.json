@@ -1,28 +1,45 @@
 {
-	"name": "Scientific Computing",
+	"name": "Scientific Computing with Python",
 	"build": {
-		"dockerfile": "Dockerfile"
+		"context": "..",
+		"dockerfile": "Dockerfile",
+		"args": {
+			"UV_VERSION": "latest",
+			"DEBIAN_VERSION": "bookworm"
+		}
 	},
 	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
-			"configureZshAsDefaultShell": true,
-			"username": "vscode"
-		}
+		"ghcr.io/dhoeric/features/hadolint:1": {}
 	},
 	"customizations": {
 		"vscode": {
-			"settings": {
-				"python.defaultInterpreterPath": "/opt/venv/bin/python"
-			},
 			"extensions": [
-				"ms-python.black-formatter",
-				"ms-python.flake8",
-				"ms-python.isort",
+				"charliermarsh.ruff",
+				"exiasr.hadolint",
+				"kevinrose.vsc-python-indent",
+				"mosapride.zenkaku",
+				"ms-azuretools.vscode-docker",
 				"ms-python.python",
-				"ms-python.vscode-pylance",
-				"ms-toolsai.jupyter"
+				"njpwerner.autodocstring",
+				"redhat.vscode-yaml",
+				"shardulm94.trailing-spaces",
+				"tamasfe.even-better-toml",
+				"yzhang.markdown-all-in-one",
+				"ms-toolsai.tensorboard"
 			]
 		}
 	},
-	"remoteUser": "vscode"
+	"containerEnv": {
+		"DISPLAY": "dummy",
+		"PYTHONUNBUFFERED": "True",
+		"UV_PREVIEW": "true",
+		"UV_LINK_MODE": "copy"
+	},
+	"runArgs": [
+		"--gpus=all",
+		"--shm-size=1g"
+	],
+	"postCreateCommand": "uv sync --frozen",
+	"postStartCommand": "uv run pre-commit install",
+	"remoteUser": "root"
 }
