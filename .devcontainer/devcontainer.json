@@ -30,9 +30,9 @@
 		"--shm-size=1g"
 	],
 	"mounts": [
-		"source=sci-comput-venv,target=${containerWorkspaceFolder}/.venv,type=volume"
+		"source=${localWorkspaceFolderBasename}-venv,target=${containerWorkspaceFolder}/.venv,type=volume"
 	],
-	"postCreateCommand": "uv sync --frozen",
+	"postCreateCommand": "sudo chown vscode .venv && uv sync --frozen",
 	"postStartCommand": "uv run pre-commit install",
 	"remoteUser": "vscode"
 }
