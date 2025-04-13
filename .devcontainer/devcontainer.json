@@ -2,11 +2,7 @@
 	"name": "Scientific Computing with Python",
 	"build": {
 		"context": "..",
-		"dockerfile": "Dockerfile",
-		"args": {
-			"UV_VERSION": "latest",
-			"DEBIAN_VERSION": "bookworm"
-		}
+		"dockerfile": "Dockerfile"
 	},
 	"features": {
 		"ghcr.io/dhoeric/features/hadolint:1": {}
@@ -29,17 +25,14 @@
 			]
 		}
 	},
-	"containerEnv": {
-		"DISPLAY": "dummy",
-		"PYTHONUNBUFFERED": "True",
-		"UV_PREVIEW": "true",
-		"UV_LINK_MODE": "copy"
-	},
 	"runArgs": [
 		"--gpus=all",
 		"--shm-size=1g"
 	],
+	"mounts": [
+		"source=sci-comput-venv,target=${containerWorkspaceFolder}/.venv,type=volume"
+	],
 	"postCreateCommand": "uv sync --frozen",
 	"postStartCommand": "uv run pre-commit install",
-	"remoteUser": "root"
+	"remoteUser": "vscode"
 }

@@ -1,8 +1,17 @@
-ARG UV_VERSION=latest
-ARG DEBIAN_VERSION=bookworm
+FROM mcr.microsoft.com/devcontainers/base:debian
+# Install system packages
+RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
+    --mount=type=cache,target=/var/lib/apt,sharing=locked \
+    apt-get update && apt-get install -y --no-install-recommends screen \
+    && rm -rf /var/lib/apt/lists/*
 
-FROM ghcr.io/astral-sh/uv:$UV_VERSION AS uv
+COPY --from=ghcr.io/astral-sh/uv:latest --chown=vscode: /uv /uvx /bin/
+ENV UV_LINK_MODE=copy
+# Only use the managed Python version
+ENV UV_PYTHON_PREFERENCE=only-managed
+# Configure the Python directory so it is consistent
+ENV UV_PYTHON_INSTALL_DIR=/python
 
-FROM mcr.microsoft.com/vscode/devcontainers/base:$DEBIAN_VERSION
-
-COPY --from=uv /uv /uvx /bin/
+WORKDIR /python
+RUN --mount=type=bind,source=.python-version,target=.python-version \
+    uv python install
