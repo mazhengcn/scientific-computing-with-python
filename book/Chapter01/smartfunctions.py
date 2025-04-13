@@ -3,7 +3,7 @@ def f(x):
 
 
 def g(x):
-    return x ** 2 + 4 * x - 5
+    return x**2 + 4 * x - 5
 
 
 def h(x):
