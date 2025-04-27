@@ -1,38 +1,40 @@
 {
-	"name": "Scientific Computing with Python",
-	"build": {
-		"context": "..",
-		"dockerfile": "Dockerfile"
-	},
-	"features": {
-		"ghcr.io/dhoeric/features/hadolint:1": {}
-	},
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"charliermarsh.ruff",
-				"exiasr.hadolint",
-				"kevinrose.vsc-python-indent",
-				"mosapride.zenkaku",
-				"ms-azuretools.vscode-docker",
-				"ms-python.python",
-				"njpwerner.autodocstring",
-				"redhat.vscode-yaml",
-				"shardulm94.trailing-spaces",
-				"tamasfe.even-better-toml",
-				"yzhang.markdown-all-in-one",
-				"ms-toolsai.tensorboard"
-			]
-		}
-	},
-	"runArgs": [
-		"--gpus=all",
-		"--shm-size=1g"
-	],
-	"mounts": [
-		"source=${localWorkspaceFolderBasename}-venv,target=${containerWorkspaceFolder}/.venv,type=volume"
-	],
-	"postCreateCommand": "sudo chown vscode .venv && uv sync --frozen",
-	"postStartCommand": "uv run pre-commit install",
-	"remoteUser": "vscode"
+    "name": "relax-nn",
+    "build": {
+        "context": "..",
+        "dockerfile": "Dockerfile",
+        "args": {
+            "VARIANT": "ubuntu"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "charliermarsh.ruff",
+                "ms-azuretools.vscode-docker",
+                "ms-python.python",
+                "ms-python.vscode-pylance",
+                "redhat.vscode-yaml",
+                "tamasfe.even-better-toml",
+                "yzhang.markdown-all-in-one",
+                "ms-toolsai.jupyter",
+                "ms-toolsai.tensorboard"
+            ]
+        }
+    },
+    "runArgs": [
+        "--cap-add=SYS_PTRACE",
+        "--security-opt=seccomp=unconfined"
+    ],
+    "mounts": [
+        "type=volume,src=${localWorkspaceFolderBasename}-venv,dst=${containerWorkspaceFolder}/.venv",
+        "type=volume,src=uv-cache,dst=/tmp/uv-cache"
+    ],
+    "postCreateCommand": {
+        "fix-uv-cache-permissions": "sudo chown -R $(whoami): /tmp/uv-cache",
+        "fix-uv-env-permissions": "sudo chown -R $(whoami): .venv",
+        "sync-environment": "uv sync --all-extras"
+    },
+    "postStartCommand": "uv run pre-commit install",
+    "remoteUser": "vscode"
 }

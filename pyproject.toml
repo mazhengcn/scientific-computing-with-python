@@ -1,15 +1,26 @@
 [project]
-name = "scientific-computing-with-python"
-version = "0.1.0"
-description = "This is the code repository for Scientific Computing with Python"
+name = "sci-comput-py"
+version = "0.0.1"
+description = "Course materials for scientific computing with Python"
+
+authors = [{ name = "Zheng Ma", email = "mazhengcn@outlook.com" }]
+maintainers = [{ name = "Zheng Ma", email = "mazhengcn@outlook.com" }]
+
+requires-python = ">=3.12"
 readme = "README.md"
-requires-python = ">=3.13"
+license = { file = "LICENSE" }
+
 dependencies = [
-    "jupyterlab>=4.3.5",
+    "jupyter>=1.1.1",
     "matplotlib>=3.10.1",
-    "numpy>=2.2.3",
+    "numpy>=2.2.5",
+    "pandas>=2.2.3",
     "scipy>=1.15.2",
+    "seaborn>=0.13.2",
+    "torch>=2.7.0",
+    "torchaudio>=2.7.0",
+    "torchvision>=0.22.0",
 ]
 
-[tool.uv]
-dev-dependencies = ["pre-commit>=3.8.0", "ruff>=0.6.3"]
+[dependency-groups]
+dev = ["pre-commit>=4.2.0", "ruff>=0.11.7"]
